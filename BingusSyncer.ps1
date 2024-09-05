@@ -1,16 +1,17 @@
-#init
-Write-Host "Initiating BingusSyncer"
-#sleep for goodluck
+# Init
+Write-Host "Initiating BingusSyncer..."
+# Sleep for good luck
 Start-Sleep -Milliseconds 250
-# Checking if Z is mounted
-if (Get-PSDrive -Name Z -ErrorAction SilentlyContinue) 
-    #if Z mounted, start copying
-    { Write-Host "Z found, nooot noot, inishiyating synk" & "Robocopy.exe" Z:\ C:\bingus\ /MIR /FFT /Z /XA:H /W:5 } 
 
-        # if z not mounted, throw error
-        
-        
-else { Write-Host "Z not found :'( womp womp" -ForegroundColor Red }
+# Check if Z drive is mounted
+if (Get-PSDrive -Name Z -ErrorAction SilentlyContinue) {
+    # If Z drive is mounted, start copying
+    Write-Host "Z drive found. Nooot noot! Initiating sync..." --ForegroundColor Green
+    Robocopy.exe Z:\ C:\bingus\ /MIR /FFT /Z /XA:H /W:5
+} else {
+    # If Z drive is not mounted, display error
+    Write-Host "Z drive not found :'( womp womp" -ForegroundColor Red
+}
 
-# End Credits
-Write-Host "BingusSyncer will exit now"
+# F-init
+Write-Host "BingusSyncer will exit now."
